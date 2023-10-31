@@ -10,6 +10,20 @@ We used:
 
 You may have to install other additional libraries such as timm and prettytable, and you can install the additional libraries without specifying the version. That is, you can use any version as long as there is no problem with compatibility with python, torch, and torchvision.
 
+
+# Datasets
+## Existing UDA datasets
+We conducted our experiments on Office-31, Office-Home, and VisDA-2017.
+
+## New UDA datasets
+As we mentioned in the preceding section, we introduce and release a new dataset [Retail-71](https://github.com/JoonHyeokJ/Retail-71).
+
+There are a few ways in which you download Retail-71.
+1. Please go into the file 'examples/script_retail71_sdat_nvc.sh'([link](https://github.com/JoonHyeokJ/NVC/blob/master/examples/script_retail71_sdat_nvc.sh)), and you can find the download link.
+2. You can check the [repository of Retail-71](https://github.com/JoonHyeokJ/Retail-71), and then find the download link.
+3. You can directly access the [Google drive-based download link](https://drive.google.com/file/d/1ySCLGlJ9KEo2dOTIpFs_kpFfI_pf1E8v/view?usp=sharing).
+
+
 # Training
 As mentioned in our paper, we appoint [SDAT](https://github.com/val-iisc/SDAT) to the baseline method, and we attach our method NVC loss to the baseline.
 
@@ -17,7 +31,7 @@ For training, go into the folder 'examples'([link](https://github.com/JoonHyeokJ
 - Office-31: script_office31_sdat_nvc.sh
 - Office-Home: script_officehome_sdat_nvc.sh
 - VisDA-2017: script_visda2017_sdat_nvc.sh
-- Retail-71: script_retail71_sdat_nvc.sh or script_retail71_sdat_nvc_test.sh
+- Retail-71: script_retail71_sdat_nvc.sh
 
 An example is as follows:
 ```bash
@@ -34,18 +48,23 @@ CUDA_VISIBLE_DEVICES=0 python cdan_mcc_sdat_nvc.py /your/path/to/Retail-71/retai
 
 Also, you can see the full list of arguments in [examples/cdan_mcc_sdat_nvc.py](https://github.com/JoonHyeokJ/NVC/blob/master/examples/cdan_mcc_sdat_nvc.py).
 
-
-# Datasets
+# Test
 ## Existing UDA datasets
-We conducted our experiments on Office-31, Office-Home, and VisDA-2017.
+In the case of Office-31, Office-Home, and VisDA-2017, you can check the test(validation) accuracy (i.e., UDA performance) when the training is ended. The accuracy is displayed on the console and written into the log file(.txt).
 
-## New UDA datasets
-As we mentioned in the preceding section, we introduce and release a new dataset [Retail-71](https://github.com/JoonHyeokJ/Retail-71).
+## Retail-71 dataset
+The validation accuracy is displayed on the console and written into the log file(.txt), as other benchmarkes are.
 
-There are a few ways in which you download Retail-71.
-1. Please go into the file 'examples/script_retail71_sdat_nvc.sh'([link](https://github.com/JoonHyeokJ/NVC/blob/master/examples/script_retail71_sdat_nvc.sh)), and you can find the download link.
-2. You can check the [repository of Retail-71](https://github.com/JoonHyeokJ/Retail-71), and then find the download link.
-3. You can directly access the [Google drive-based download link](https://drive.google.com/file/d/1ySCLGlJ9KEo2dOTIpFs_kpFfI_pf1E8v/view?usp=sharing).
+Importantly, Retail-71 contains its test set consisting of three difficulties (i.e., easy, medium, and hard difficulty).
+
+You can see [examples/script_retail71_sdat_nvc_test.sh](https://github.com/JoonHyeokJ/NVC/blob/master/examples/script_retail71_sdat_nvc_test.sh) and use the test scripts to test the trained model and compute the easy, medium, and hard accuracies.
+
+## Test with negative views (for all datasets)
+The term 'negative view' means the sample (i.e., image) transformed by negative augmentation such as P-Shuffle.
+In our paper, we proposed to evaluate based on Negative Accuracy (ideally 100/{# of classes} (%)) and Average Negative Confidence Score (ideally 1/{# of classes}), and both are the metrics computed with negative view to evaluate how heavily the trained model depends on the local features.
+For both metrics, higher value means that the model more heavily depends on the local features. Thus, lower value implies the model captures the contextual relation between image patches better, which is more desired case.
+
+You can find the scripts in [examples/eval_w_negaug.sh](https://github.com/JoonHyeokJ/NVC/blob/master/examples/eval_w_negaug.sh).
 
 
 # Pretrained models
