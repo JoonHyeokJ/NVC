@@ -1,5 +1,5 @@
-# NVC: Negative View-based Contrastive regularizer for Unsupervised Domain Adaptation
-Inspired by [negative augmentation](https://arxiv.org/abs/2110.07858), We propose NVC loss which can be used in UDA setting and boosts UDA performance, leveraging the negative augmentation, especially patch-based shuffling (a.k.a P-Shuffle).
+# NVC: Robust Unsupervised Domain Adaptation through Negative-View Regularization
+Inspired by [negative augmentation](https://arxiv.org/abs/2110.07858), We propose Negative View-based Contrastive (NVC) loss which can be used in UDA setting and boosts UDA performance, leveraging the negative augmentation, especially patch-based shuffling (a.k.a P-Shuffle).
 Our comprehensive experiments show that NVC prevents ViT-based models from heavily depending on local features within image patches and helps the models to attend to the semantically meaningful global features.
 
 # Requirements
