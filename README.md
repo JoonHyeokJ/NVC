@@ -2,6 +2,20 @@
 Inspired by [negative augmentation](https://arxiv.org/abs/2110.07858), We propose Negative View-based Contrastive (NVC) loss which can be used in UDA setting and boosts UDA performance, leveraging the negative augmentation, especially patch-based shuffling (a.k.a P-Shuffle).
 Our comprehensive experiments show that NVC prevents ViT-based models from heavily depending on local features within image patches and helps the models to attend to the semantically meaningful global features.
 
+Our paper "Robust Unsupervised Domain Adaptation through Negative-View Regularization" is accepted to WACV 2024, and you can access to the paper with the links: [abstract](https://openaccess.thecvf.com/content/WACV2024/html/Jang_Robust_Unsupervised_Domain_Adaptation_Through_Negative-View_Regularization_WACV_2024_paper.html) and [paper](https://openaccess.thecvf.com/content/WACV2024/papers/Jang_Robust_Unsupervised_Domain_Adaptation_Through_Negative-View_Regularization_WACV_2024_paper.pdf).
+
+The bibtex code of our paper is as follows:
+```bash
+@InProceedings{Jang_2024_WACV,
+    author    = {Jang, Joonhyeok and Lee, Sunhyeok and Kim, Seonghak and Kim, Jung-un and Kim, Seonghyun and Kim, Daeshik},
+    title     = {Robust Unsupervised Domain Adaptation Through Negative-View Regularization},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {January},
+    year      = {2024},
+    pages     = {2462-2471}
+}
+```
+
 # Requirements
 We used:
 - python==3.8.5
