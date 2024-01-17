@@ -1,3 +1,4 @@
+# I borrowed a code of the function 'rollout' and 'show_mask_on_image' from https://hongl.tistory.com/234
 import cv2
 import torch
 
